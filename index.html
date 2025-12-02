@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Calculadora de Bhaskara Aprimorada</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <h1>Calculadora de Bhaskara Aprimorada</h1>
+      <p>Desenvolvido por: <strong>Gabriel</strong></p>
+    </div>
+  </header>
+
+  <main>
+    <section class="calculator">
+      <h2>Calcule as Raízes da Equação Quadrática</h2>
+      <input type="number" id="a" placeholder="Coeficiente a" step="any"/>
+      <input type="number" id="b" placeholder="Coeficiente b" step="any"/>
+      <input type="number" id="c" placeholder="Coeficiente c" step="any"/>
+      <button id="btnCalculate">Calcular Raízes</button>
+      <div class="result" id="result"></div>
+    </section>
+
+    <section class="history-container">
+      <h2>Histórico das Equações</h2>
+      <ul class="history-list" id="historyList"></ul>
+    </section>
+
+    <section class="chart-container">
+      <canvas id="graphCanvas"></canvas>
+    </section>
+
+    <section class="controls">
+      <button id="btnToggleMode">Modo Escuro/Claro</button>
+      <button id="btnVoiceInput">Entrada por Voz</button>
+    </section>
+
+    <section id="qrCodeContainer" title="Acesse pelo celular">
+      <h2>QR Code para acessar a calculadora no celular</h2>
+      <div id="qrCode"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

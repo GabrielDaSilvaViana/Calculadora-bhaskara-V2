@@ -1,0 +1,328 @@
+:root {
+  --bg-body: #050816;
+  --bg-gradient: radial-gradient(circle at top, #3b82f6 0, transparent 55%),
+                 radial-gradient(circle at bottom, #22c55e 0, transparent 55%),
+                 #020617;
+  --card: rgba(15, 23, 42, 0.9);
+  --card-border: rgba(148, 163, 184, 0.4);
+  --accent: #3b82f6;
+  --accent-soft: rgba(59, 130, 246, 0.18);
+  --accent-strong: #2563eb;
+  --text-main: #e5e7eb;
+  --text-muted: #9ca3af;
+  --danger: #f97373;
+}
+
+body.dark-mode {
+  --bg-body: #020617;
+  --bg-gradient: radial-gradient(circle at top, #8b5cf6 0, transparent 55%),
+                 radial-gradient(circle at bottom, #ec4899 0, transparent 55%),
+                 #020617;
+  --accent: #8b5cf6;
+  --accent-soft: rgba(139, 92, 246, 0.18);
+  --accent-strong: #7c3aed;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BODY */
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg-gradient);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+}
+
+/* HEADER */
+
+header {
+  width: 100%;
+  max-width: 960px;
+  padding: 14px 20px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(15,23,42,0.98), rgba(15,23,42,0.88));
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  box-shadow: 0 18px 45px rgba(15,23,42,0.7);
+  margin-bottom: 24px;
+  position: sticky;
+  top: 10px;
+  z-index: 20;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+header h1 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+header p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* LAYOUT PRINCIPAL */
+
+main {
+  width: 100%;
+  max-width: 960px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 20px;
+}
+
+/* CARDS GENÉRICOS */
+
+.card {
+  background: var(--card);
+  border-radius: 24px;
+  border: 1px solid var(--card-border);
+  box-shadow: 0 18px 40px rgba(15,23,42,0.65);
+  padding: 20px 22px;
+  backdrop-filter: blur(18px);
+}
+
+/* CALCULADORA (coluna esquerda) */
+
+.calculator {
+  grid-column: 1 / 2;
+}
+
+.calculator h2 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.calculator input[type="number"] {
+  width: 100%;
+  padding: 11px 14px;
+  margin-bottom: 8px;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  background: rgba(15, 23, 42, 0.9);
+  color: var(--text-main);
+  font-size: 0.9rem;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.08s;
+}
+
+.calculator input[type="number"]::placeholder {
+  color: #6b7280;
+}
+
+.calculator input[type="number"]:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.55);
+  transform: translateY(-1px);
+}
+
+/* BOTÕES */
+
+button {
+  border: none;
+  border-radius: 999px;
+  padding: 11px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  color: #f9fafb;
+  width: 100%;
+  margin-top: 6px;
+  box-shadow: 0 12px 25px rgba(37, 99, 235, 0.55);
+  transition: transform 0.08s, box-shadow 0.15s, filter 0.15s;
+}
+
+button:hover {
+  filter: brightness(1.07);
+  transform: translateY(-1px);
+  box-shadow: 0 16px 32px rgba(37, 99, 235, 0.7);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 8px 18px rgba(15,23,42,0.85);
+}
+
+/* RESULTADO */
+
+.result {
+  margin-top: 14px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  background: radial-gradient(circle at top left, var(--accent-soft), transparent 55%);
+  border-radius: 18px;
+  padding: 12px 14px;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  min-height: 52px;
+  white-space: pre-line;
+}
+
+.error {
+  color: var(--danger);
+}
+
+/* HISTÓRICO (também card) */
+
+.history-container {
+  grid-column: 1 / 2;
+}
+
+.history-container h2 {
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+}
+
+.history-list {
+  list-style: none;
+  max-height: 160px;
+  overflow-y: auto;
+  padding-right: 4px;
+  font-size: 0.82rem;
+}
+
+.history-list li {
+  padding: 6px 0;
+  border-bottom: 1px dashed rgba(148, 163, 184, 0.45);
+  color: var(--text-muted);
+}
+
+/* SCROLL BAR */
+
+.history-list::-webkit-scrollbar {
+  width: 6px;
+}
+.history-list::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.7);
+  border-radius: 999px;
+}
+
+/* GRÁFICO (coluna direita) */
+
+.chart-container {
+  grid-column: 2 / 3;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.chart-container h2 {
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+
+.canvas-wrapper {
+  flex: 1;
+  border-radius: 18px;
+  overflow: hidden;
+  background: radial-gradient(circle at top right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.96));
+  border: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+canvas#graphCanvas {
+  width: 100% !important;
+  height: 260px !important;
+  display: block;
+}
+
+/* CONTROLES (modo escuro + voz) */
+
+.controls {
+  grid-column: 2 / 3;
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.controls button {
+  width: auto;
+}
+
+/* QR CODE */
+
+#qrCodeContainer {
+  grid-column: 1 / -1;
+  margin-top: 10px;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+#qrCodeContainer h2 {
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+#qrCode {
+  display: inline-block;
+  padding: 10px;
+  border-radius: 18px;
+  background: rgba(15,23,42,0.9);
+  border: 1px solid rgba(148,163,184,0.45);
+  box-shadow: 0 16px 35px rgba(15,23,42,0.8);
+}
+
+/* RESPONSIVO */
+
+@media (max-width: 780px) {
+  main {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .calculator,
+  .history-container,
+  .chart-container,
+  .controls {
+    grid-column: auto;
+  }
+
+  header {
+    border-radius: 18px;
+  }
+
+  .controls {
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  header h1 {
+    font-size: 1rem;
+  }
+
+  .card {
+    padding: 16px 14px;
+  }
+
+  canvas#graphCanvas {
+    height: 220px !important;
+  }
+}
